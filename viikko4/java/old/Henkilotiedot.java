@@ -1,27 +1,23 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
-
 public class Henkilotiedot {
-    public static void printMenu(){
-        System.out.println("1. Lisaa uusi henkilo");
-        System.out.println("2. Poista henkilo");
-        System.out.println("3. Tulosta henkilot");
-        System.out.println("4. Lopeta");
-    }
+    private ArrayList<Henkilo> henkilot = new ArrayList<Henkilo>();
+    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner2 = new Scanner(System.in);
+
     public static void main ( String args[]){
-
-        Scanner scanner = new Scanner(System.in);
-        Scanner scanner2 = new Scanner(System.in);
-        int valinta = 0;
+        Henkilotiedot h = new Henkilotiedot();
+        h.start();
         
+    }
+    public Henkilotiedot(){
+    }
 
-        List<Henkilo> henkilot = new ArrayList<Henkilo>();
-
-
-
+    public void start(){
+        
+        int valinta = 0;
         while (valinta != 4){
             printMenu();
             valinta = scanner.nextInt();
@@ -44,7 +40,7 @@ public class Henkilotiedot {
                 case 2:
                 System.out.println("Syota poistettavan henkilon nimi:");
                 String poistettava = scanner2.nextLine();
-                henkilot.removeIf(h -> h.getNimi().contains(poistettava));
+                henkilot.removeIf(h -> h.getNimi().equals(poistettava));
                 break;
 
                 case 3:
@@ -62,10 +58,14 @@ public class Henkilotiedot {
 
                 default:
                 System.out.println("Virheellinen valinta");
+    }
 
-            }
         }
-        scanner.close();
-        scanner2.close();
+    }
+    public static void printMenu(){
+        System.out.println("1. Lisaa uusi henkilo");
+        System.out.println("2. Poista henkilo");
+        System.out.println("3. Tulosta henkilot");
+        System.out.println("4. Lopeta");
     }
 }

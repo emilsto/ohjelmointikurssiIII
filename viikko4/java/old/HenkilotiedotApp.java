@@ -1,27 +1,23 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
+public class HenkilotiedotApp {
+    private ArrayList<Henkilo> henkilot = new ArrayList<Henkilo>();
+    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner2 = new Scanner(System.in);
 
-public class Henkilotiedot {
-    public static void printMenu(){
-        System.out.println("1. Lisaa uusi henkilo");
-        System.out.println("2. Poista henkilo");
-        System.out.println("3. Tulosta henkilot");
-        System.out.println("4. Lopeta");
-    }
     public static void main ( String args[]){
-
-        Scanner scanner = new Scanner(System.in);
-        Scanner scanner2 = new Scanner(System.in);
-        int valinta = 0;
+        Henkilotiedot h = new Henkilotiedot();
+        h.start();
         
-
-        List<Henkilo> henkilot = new ArrayList<Henkilo>();
-
-
-
+    }
+    public HenkilotiedotApp(){
+    }
+    
+    public void start(){
+        
+        int valinta = 0;
         while (valinta != 4){
             printMenu();
             valinta = scanner.nextInt();
@@ -62,10 +58,14 @@ public class Henkilotiedot {
 
                 default:
                 System.out.println("Virheellinen valinta");
+    }
 
-            }
         }
-        scanner.close();
-        scanner2.close();
+    }
+    public static void printMenu(){
+        System.out.println("1. Lisaa uusi henkilo");
+        System.out.println("2. Poista henkilo");
+        System.out.println("3. Tulosta henkilot");
+        System.out.println("4. Lopeta");
     }
 }
